@@ -1,49 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Suscripción Component Demo</title>
   <style>
-    .horizontal {
-      display: flex;
-      justify-content: center;
-    }
+
   </style>
 </head>
-<body>
-  <h1>Prueba del componente estándar</h1>
-  <div class="horizontal">
-    <suscripcion-component 
-      title="Basic" 
-      visits="500" 
-      price="0" 
-      features="Feature básica">
-    </suscripcion-component>
-    <suscripcion-component 
-      title="Freelance" 
-      visits="10 000" 
-      price="16" 
-      features="Feature básica, Features freelance">
-    </suscripcion-component>
-    <suscripcion-component 
-      title="Business" 
-      visits="100 000" 
-      price="49" 
-      features="Feature básica, Features freelance, Features business">
-    </suscripcion-component>
-    <suscripcion-component 
-      title="Enterprice" 
-      visits="1 000 000+" 
-      price="129" 
-      features="Feature básica, Features freelance, Features business, Features enterprice">
-    </suscripcion-component>
-  </div>
 
-  <script src="suscripcion.js"></script>
-  <script>
-    document.addEventListener('suscripcion-click', e => {
-      alert(`Haz elegido el plan ${e.detail.plan}`);
-    });
-  </script>
+<body>
+
 </body>
+
 </html>

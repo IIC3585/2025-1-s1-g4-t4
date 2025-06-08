@@ -1,43 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo de Componentes</title>
     <script type="module" src="accordion-wc.js"></script>
     <script type="module" src="accordion-lit.js"></script>
-    
+    <script type="module" src="suscripcion-wc.js"></script>
+    <script type="module" src="suscripcion-lit.js"></script>
+    <script>
+        document.addEventListener('suscripcion-click', e => {
+            alert(`Has elegido el plan ${e.detail.plan}`);
+        });
+    </script>
+
     <style>
-        body { 
+        body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            padding: 20px; 
-            background-color: #f0f2f5; 
+            padding: 20px;
+            background-color: #f0f2f5;
             color: #333;
             line-height: 1.6;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
-        h1, h2, h3, h4 { 
-            color: #1a2530; 
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #1a2530;
             margin-top: 1.5em;
             margin-bottom: 0.5em;
         }
-        h1 { font-size: 2.4em; text-align: center; color: #2c3e50; margin-bottom: 1em; }
-        h2 { font-size: 2em; border-bottom: 2px solid #79a6d2; padding-bottom: 0.3em; color: #2980b9;}
-        h3 { font-size: 1.5em; color: #34495e; }
-        h4 { font-size: 1.2em; color: #555; font-style: italic;}
+
+        h1 {
+            font-size: 2.4em;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 1em;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid #79a6d2;
+            padding-bottom: 0.3em;
+            color: #2980b9;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: #34495e;
+        }
+
+        h4 {
+            font-size: 1.2em;
+            color: #555;
+            font-style: italic;
+        }
 
         .demo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 30px;
         }
+
         .demo-column {
-            background-color: #fff; 
-            border-radius: 8px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            padding: 20px 25px 25px; 
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px 25px 25px;
             margin-bottom: 20px;
         }
+
         .explanation {
             background-color: #e9f5ff;
             border-left: 4px solid #2980b9;
@@ -46,7 +85,11 @@
             border-radius: 4px;
             font-size: 0.95em;
         }
-        .explanation p { margin: 0.5em 0; }
+
+        .explanation p {
+            margin: 0.5em 0;
+        }
+
         code {
             background-color: #f4f4f4;
             padding: 0.2em 0.4em;
@@ -54,8 +97,13 @@
             font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
             font-size: 0.9em;
         }
-        pre code { display: block; padding: 10px; overflow-x: auto; }
-        
+
+        pre code {
+            display: block;
+            padding: 10px;
+            overflow-x: auto;
+        }
+
         /* --- Estilos Personalizados para Acordeones --- */
         #vanilla-accordion-custom {
             --accordion-section-border-color: #8e44ad;
@@ -67,44 +115,65 @@
             --accordion-section-content-bg: #fdf9ff;
             --accordion-section-content-color: #3c1361;
             --accordion-section-header-padding: 14px 18px;
-            --accordion-transition-duration: 0.7s; /* Animación más lenta */
+            --accordion-transition-duration: 0.7s;
+            /* Animación más lenta */
             --accordion-transition-timing-function: ease-out;
-            
+
             border: 2px solid #732d91;
             border-radius: 7px;
             overflow: hidden;
         }
+
         #vanilla-accordion-custom accordion-section-wc::part(header) {
             font-family: 'Georgia', serif;
             letter-spacing: 0.5px;
         }
 
         #lit-accordion-custom {
-            --accordion-section-border-color: #16a085; 
-            --accordion-section-border-radius: 0px; 
+            --accordion-section-border-color: #16a085;
+            --accordion-section-border-radius: 0px;
             --accordion-section-header-bg: #16a085;
             --accordion-section-header-color: white;
             --accordion-section-header-hover-bg: #117a65;
             --accordion-icon-color: #d0f0e0;
             --accordion-section-content-bg: #e8f8f5;
             --accordion-section-content-color: #0e5a4a;
-            --accordion-transition-duration: 0.1s; /* Animación más rápida */
+            --accordion-transition-duration: 0.1s;
+            /* Animación más rápida */
             --accordion-transition-timing-function: ease-out;
-            
+
             border: 3px dashed #117a65;
-            border-radius: 8px; 
+            border-radius: 8px;
             overflow: hidden;
         }
-         #lit-accordion-custom accordion-section-lit::part(icon) {
+
+        #lit-accordion-custom accordion-section-lit::part(icon) {
             font-weight: bold;
         }
-        
-        .custom-title-wc { font-weight: bold; color: #c0392b; } 
-        .custom-title-lit { font-style: italic; color: #27ae60; } 
 
-        p, ul { margin-top: 0; margin-bottom: 1em; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 0.5em; }
+        .custom-title-wc {
+            font-weight: bold;
+            color: #c0392b;
+        }
+
+        .custom-title-lit {
+            font-style: italic;
+            color: #27ae60;
+        }
+
+        p,
+        ul {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
 
         .technical-explanation {
             background-color: #ffffff;
@@ -112,116 +181,235 @@
             border-radius: 8px;
             padding: 20px;
             margin-top: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
+
         .technical-explanation h3 {
-            margin-top:0;
+            margin-top: 0;
             color: #2980b9;
             border-bottom: 1px solid #eee;
             padding-bottom: 0.5em;
         }
+
+        .horizontal {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px 0px;
+            margin-bottom: 20px;
+            min-width: 320px;
+        }
     </style>
 </head>
+
 <body>
-<div class="container">
-    <h1><span aria-hidden="true">🧩</span> Demo</h1>
-    <h2><span aria-hidden="true">🤝</span> Demo componente suscripcion</h2>
-    <h2><span aria-hidden="true">🪗</span> Demo componente acordion</h2>
+    <div class="container">
+        <h1><span aria-hidden="true">🧩</span> Demo</h1>
+        <h2><span aria-hidden="true">🤝</span> Demo componente suscripcion</h2>
+        <h3>Web Component estándar</h3>
+        <div class="horizontal">
+            <suscripcion-component title="Basic" visits="500" price="0" features="Feature básica">
+            </suscripcion-component>
+            <suscripcion-component title="Freelance" visits="10 000" price="16"
+                features="Feature básica, Features freelance">
+            </suscripcion-component>
+            <suscripcion-component title="Business" visits="100 000" price="49"
+                features="Feature básica, Features freelance, Features business">
+            </suscripcion-component>
+            <suscripcion-component title="Enterprice" visits="1 000 000+" price="129"
+                features="Feature básica, Features freelance, Features business, Features enterprice">
+            </suscripcion-component>
+        </div>
+        <h3>LitElement Component</h3>
+        <div class="horizontal">
+            <suscripcion-lit title="Basic" visits="500" price="0" features="Feature básica"></suscripcion-lit>
+            <suscripcion-lit title="Freelance" visits="10 000" price="16"
+                features="Feature básica, Features freelance"></suscripcion-lit>
+            <suscripcion-lit title="Business" visits="100 000" price="49"
+                features="Feature básica, Features freelance, Features business"></suscripcion-lit>
+            <suscripcion-lit title="Enterprice" visits="1 000 000+" price="129"
+                features="Feature básica, Features freelance, Features business, Features enterprice"></suscripcion-lit>
+        </div>
+        <h3>Variaciones y Personalización del componente suscripción</h3>
 
-    <div class="demo-grid">
-        <div class="demo-column">
-            <h3>Web Component estándar</h3>
-            
-            <h4>Estilo por Defecto y Funcionalidad Básica</h4>
-            <div class="explanation">
-                <p>Este es el acordeón Estándar WC con su apariencia y comportamiento predeterminados. Al hacer clic en una cabecera, la sección correspondiente se expande y cualquier otra sección abierta se cierra.</p>
-            </div>
-            <accordion-wc id="vanilla-accordion-default">
-                <accordion-section-wc title="Estándar Sección 1 (Abierta)" open>
-                    <p>Contenido para la sección 1. Esta sección se muestra abierta por defecto.</p>
-                </accordion-section-wc>
-                <accordion-section-wc title="Estándar Sección 2">
-                    <p>Contenido para la sección 2. Lorem ipsum dolor sit amet.</p>
-                    <ul><li>Elemento A</li><li>Elemento B</li></ul>
-                </accordion-section-wc>
-                <accordion-section-wc> <p>Contenido para la sección 3, usando el título por defecto. 
-                    Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll.
-                </p>
-                </accordion-section-wc>
-            </accordion-wc>
-
-            <h4>Personalización Avanzada y Nuevas Características</h4>
-             <div class="explanation">
-                <p>Este acordeón estándar WC demuestra varias personalizaciones:</p>
-                <ul>
-                    <li><strong>Estilo Temático:</strong> Colores y bordes personalizados mediante CSS Custom Properties.</li>
-                    <li><strong>Iconos Personalizados:</strong> En primera y segunda sección</li>
-                    <li><strong>Auto-Scroll:</strong> El atributo <code>scroll-to-open</code> en <code>&lt;accordion-wc&gt;</code> hace que la sección se desplace a la vista al abrirse</li>
-                    <li><strong>Animación Personalizada:</strong> La duración de la animación de apertura/cierre son diferentes son más lentas</code>.</li>
-                    <li><strong>Título con Slot:</strong> La tercera sección usa un <code>&lt;span slot="title"&gt;</code> para un título HTML enriquecido.</li>
-                     <li><strong>Styling con ::part:</strong> La cabecera (<code>::part(header)</code>) tiene una fuente diferente.</li>
-                </ul>
-            </div>
-            <accordion-wc id="vanilla-accordion-custom" scroll-to-open>
-                <accordion-section-wc title="Sección Púrpura A (Iconos +/-)" icon-closed="+" icon-open="-">
-                    <p>Contenido personalizado. Iconos '+' y '-' que no rotan, sino que cambian.</p>
-                </accordion-section-wc>
-                <accordion-section-wc title="Sección Púrpura B (Emoji)" icon-closed="🦄">
-                    <p>Esta sección usa un emoji como ícono, que rotará al abrirse.</p>
-                </accordion-section-wc>
-                <accordion-section-wc title="Título Ignorado por Slot">
-                     <span slot="title" class="custom-title-wc">✨ Título <em>Slotted</em> Púrpura</span>
-                    <p>El atributo 'title' se ignora porque se usó un slot.</p>
-                </accordion-section-wc>
-                 <accordion-section-wc title="Sección Púrpura D">
-                    <p>Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll.</p>
-                </accordion-section-wc>
-            </accordion-wc>
+        <div class="explanation">
+            <p>Estas versiones de <code>&lt;suscripcion-component&gt;</code> y <code>&lt;suscripcion-lit&gt;</code>
+                demuestran:</p>
+            <ul>
+                <li><strong>Personalización mediante CSS variables</strong> (colores de fondo, texto, borde).</li>
+                <li><strong>Contenido enriquecido con <code>&lt;slot&gt;</code></strong> para títulos con íconos.</li>
+                <li><strong>Temas claros y oscuros</strong> para integrarlo en diferentes UIs.</li>
+                <li><strong>Reacción al evento <code>suscripcion-click</code></strong>.</li>
+            </ul>
         </div>
 
-        <div class="demo-column">
-            <h3>LitElement Component</h3>
-            
-            <h4>Estilo por Defecto y Funcionalidad Básica</h4>
-            <div class="explanation">
-                <p>Este es el acordeón Lit con su apariencia y comportamiento predeterminados. Similar al Estándar WC, solo una sección se mantiene abierta.</p>
-            </div>
-            <accordion-lit id="lit-accordion-default">
-                <accordion-section-lit title="Lit Sección 1 (Abierta)" open>
-                    <p>Contenido para la sección 1 de Lit.</p>
-                </accordion-section-lit>
-                <accordion-section-lit title="Lit Sección 2">
-                    <p>Contenido para la sección 2 de Lit. Reactividad y eficiencia.</p>
-                </accordion-section-lit>
-                <accordion-section-lit> <span slot="title" class="custom-title-lit">🎨 Título <i>Slotted</i> Verde</span>
-                    <p>Contenido para la sección 3 de Lit, con título personalizado vía slot.</p>
-                </accordion-section-lit>
-            </accordion-lit>
-
-            <h4>Personalización Avanzada y Nuevas Características</h4>
-            <div class="explanation">
-                <p>Este acordeón Lit también demuestra personalizaciones avanzadas:</p>
-                 <ul>
-                    <li><strong>Estilo Temático:</strong> Apariencia turquesa con bordes discontinuos en el contenedor principal.</li>
-                    <li><strong>Iconos Personalizados:</strong> En la primera sección.</li>
-                    <li><strong>Auto-Scroll:</strong> También con <code>scroll-to-open</code> para mejor UX.</li>
-                    <li><strong>Animación Personalizada:</strong> Animación más rápida.</li>
-                     <li><strong>Styling con ::part:</strong> El ícono (<code>::part(icon)</code>) tiene un `font-weight` diferente.</li>
-                </ul>
-            </div>
-            <accordion-lit id="lit-accordion-custom" scroll-to-open>
-                <accordion-section-lit title="Sección Turquesa X (Iconos ►/▼)" icon-closed="►" icon-open="▼" open>
-                    <p>Contenido personalizado. Iconos específicos para abierto/cerrado.</p>
-                </accordion-section-lit>
-                <accordion-section-lit title="Sección Turquesa Y (Icono por defecto)">
-                    <p>Esta sección usa el ícono por defecto (▶) que rota.</p>
-                </accordion-section-lit>
-                 <accordion-section-lit title="Sección Turquesa Z">
-                    <p>Mucho contenido para probar el scroll en Lit. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll.</p>
-                </accordion-section-lit>
-            </accordion-lit>
+        <div class="horizontal" style="--plan-bg: #fef6e4;
+            --suscripcion-color: #6a4c93;
+            --suscripcion-header-color: #6a4c93;
+            --suscripcion-visits-color: #6a4c93;
+            --suscripcion-price-color: #6a4c93;
+            --suscripcion-features-color: #6a4c93;
+            --suscripcion-btn-bg: #fff0da;
+            --suscripcion-btn-color: #6a4c93;
+            --suscripcion-btn-border-color: #d8c3f3;
+            --suscripcion-btn-hover-bg: #fdeacc;">
+            <suscripcion-component visits="3 000" price="5" features="Métricas limitadas, Soporte por email">
+                <span slot="title">🌟 Plan Estrella</span>
+                <span slot="btn-text">¡Suscríbete!</span>
+            </suscripcion-component>
         </div>
-    </div>
+
+        <div class="horizontal" style="--suscripcion-bg: #2c3e50;
+            --plan-bg: #34495e;
+            --suscripcion-color: #ecf0f1;
+            --suscripcion-header-color: #ecf0f1;
+            --suscripcion-visits-color: #bdc3c7;
+            --suscripcion-price-color: #1abc9c;
+            --suscripcion-features-color: #ecf0f1;
+            --suscripcion-btn-bg: #34495e;
+            --suscripcion-btn-color: #ecf0f1;
+            --suscripcion-btn-border-color: #7f8c8d;
+            --suscripcion-btn-hover-bg: #3d566e;">
+            <suscripcion-lit visits="∞" price="499" features="Todas las funciones, Soporte dedicado, API privada">
+                <span slot="title">🧠 Ultra Premium</span>
+            </suscripcion-lit>
+        </div>
+
+        <h2><span aria-hidden="true">🪗</span> Demo componente acordion</h2>
+
+        <div class="demo-grid">
+            <div class="demo-column">
+                <h3>Web Component estándar</h3>
+
+                <h4>Estilo por Defecto y Funcionalidad Básica</h4>
+                <div class="explanation">
+                    <p>Este es el acordeón Estándar WC con su apariencia y comportamiento predeterminados. Al hacer clic
+                        en una cabecera, la sección correspondiente se expande y cualquier otra sección abierta se
+                        cierra.</p>
+                </div>
+                <accordion-wc id="vanilla-accordion-default">
+                    <accordion-section-wc title="Estándar Sección 1 (Abierta)" open>
+                        <p>Contenido para la sección 1. Esta sección se muestra abierta por defecto.</p>
+                    </accordion-section-wc>
+                    <accordion-section-wc title="Estándar Sección 2">
+                        <p>Contenido para la sección 2. Lorem ipsum dolor sit amet.</p>
+                        <ul>
+                            <li>Elemento A</li>
+                            <li>Elemento B</li>
+                        </ul>
+                    </accordion-section-wc>
+                    <accordion-section-wc>
+                        <p>Contenido para la sección 3, usando el título por defecto.
+                            Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho
+                            contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para
+                            probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el
+                            scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho
+                            contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para
+                            probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el
+                            scroll.
+                        </p>
+                    </accordion-section-wc>
+                </accordion-wc>
+
+                <h4>Personalización Avanzada y Nuevas Características</h4>
+                <div class="explanation">
+                    <p>Este acordeón estándar WC demuestra varias personalizaciones:</p>
+                    <ul>
+                        <li><strong>Estilo Temático:</strong> Colores y bordes personalizados mediante CSS Custom
+                            Properties.</li>
+                        <li><strong>Iconos Personalizados:</strong> En primera y segunda sección</li>
+                        <li><strong>Auto-Scroll:</strong> El atributo <code>scroll-to-open</code> en
+                            <code>&lt;accordion-wc&gt;</code> hace que la sección se desplace a la vista al abrirse
+                        </li>
+                        <li><strong>Animación Personalizada:</strong> La duración de la animación de apertura/cierre son
+                            diferentes son más lentas</code>.</li>
+                        <li><strong>Título con Slot:</strong> La tercera sección usa un
+                            <code>&lt;span slot="title"&gt;</code> para un título HTML enriquecido.
+                        </li>
+                        <li><strong>Styling con ::part:</strong> La cabecera (<code>::part(header)</code>) tiene una
+                            fuente diferente.</li>
+                    </ul>
+                </div>
+                <accordion-wc id="vanilla-accordion-custom" scroll-to-open>
+                    <accordion-section-wc title="Sección Púrpura A (Iconos +/-)" icon-closed="+" icon-open="-">
+                        <p>Contenido personalizado. Iconos '+' y '-' que no rotan, sino que cambian.</p>
+                    </accordion-section-wc>
+                    <accordion-section-wc title="Sección Púrpura B (Emoji)" icon-closed="🦄">
+                        <p>Esta sección usa un emoji como ícono, que rotará al abrirse.</p>
+                    </accordion-section-wc>
+                    <accordion-section-wc title="Título Ignorado por Slot">
+                        <span slot="title" class="custom-title-wc">✨ Título <em>Slotted</em> Púrpura</span>
+                        <p>El atributo 'title' se ignora porque se usó un slot.</p>
+                    </accordion-section-wc>
+                    <accordion-section-wc title="Sección Púrpura D">
+                        <p>Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido
+                            para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el
+                            scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho
+                            contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para
+                            probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el
+                            scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll.</p>
+                    </accordion-section-wc>
+                </accordion-wc>
+            </div>
+
+            <div class="demo-column">
+                <h3>LitElement Component</h3>
+
+                <h4>Estilo por Defecto y Funcionalidad Básica</h4>
+                <div class="explanation">
+                    <p>Este es el acordeón Lit con su apariencia y comportamiento predeterminados. Similar al Estándar
+                        WC, solo una sección se mantiene abierta.</p>
+                </div>
+                <accordion-lit id="lit-accordion-default">
+                    <accordion-section-lit title="Lit Sección 1 (Abierta)" open>
+                        <p>Contenido para la sección 1 de Lit.</p>
+                    </accordion-section-lit>
+                    <accordion-section-lit title="Lit Sección 2">
+                        <p>Contenido para la sección 2 de Lit. Reactividad y eficiencia.</p>
+                    </accordion-section-lit>
+                    <accordion-section-lit> <span slot="title" class="custom-title-lit">🎨 Título <i>Slotted</i>
+                            Verde</span>
+                        <p>Contenido para la sección 3 de Lit, con título personalizado vía slot.</p>
+                    </accordion-section-lit>
+                </accordion-lit>
+
+                <h4>Personalización Avanzada y Nuevas Características</h4>
+                <div class="explanation">
+                    <p>Este acordeón Lit también demuestra personalizaciones avanzadas:</p>
+                    <ul>
+                        <li><strong>Estilo Temático:</strong> Apariencia turquesa con bordes discontinuos en el
+                            contenedor principal.</li>
+                        <li><strong>Iconos Personalizados:</strong> En la primera sección.</li>
+                        <li><strong>Auto-Scroll:</strong> También con <code>scroll-to-open</code> para mejor UX.</li>
+                        <li><strong>Animación Personalizada:</strong> Animación más rápida.</li>
+                        <li><strong>Styling con ::part:</strong> El ícono (<code>::part(icon)</code>) tiene un
+                            `font-weight` diferente.</li>
+                    </ul>
+                </div>
+                <accordion-lit id="lit-accordion-custom" scroll-to-open>
+                    <accordion-section-lit title="Sección Turquesa X (Iconos ►/▼)" icon-closed="►" icon-open="▼" open>
+                        <p>Contenido personalizado. Iconos específicos para abierto/cerrado.</p>
+                    </accordion-section-lit>
+                    <accordion-section-lit title="Sección Turquesa Y (Icono por defecto)">
+                        <p>Esta sección usa el ícono por defecto (▶) que rota.</p>
+                    </accordion-section-lit>
+                    <accordion-section-lit title="Sección Turquesa Z">
+                        <p>Mucho contenido para probar el scroll en Lit. Mucho contenido para probar el scroll. Mucho
+                            contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para
+                            probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el
+                            scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho
+                            contenido para probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para
+                            probar el scroll. Mucho contenido para probar el scroll. Mucho contenido para probar el
+                            scroll.</p>
+                    </accordion-section-lit>
+                </accordion-lit>
+            </div>
+        </div>
 
 </body>
+
 </html>
