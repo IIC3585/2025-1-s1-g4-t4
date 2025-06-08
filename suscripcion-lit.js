@@ -98,19 +98,21 @@ export class SuscripcionLit extends LitElement {
         return html`
             <div class="plan">
             <div class="plan-title">
-            ${this.title ? this.title : html`<slot name="title"></slot>`}
+                ${this.title ? this.title : html`<slot name="title"></slot>`}
             </div>
             <div class="plan-visits">
-            ${this.visits
+                ${this.visits
                 ? `${this.visits} monthly visits`
                 : html`<slot name="visits"></slot>`}
             </div>
             <div class="plan-price">
-            ${this.price ? `\$${this.price} /mo` : html`<slot name="price"></slot>`}
+                ${this.price ? `\$${this.price} /mo` : html`<slot name="price"></slot>`}
             </div>
-            <button @click=${this._onClick}>Seleccionar opción</button>
+            <button @click=${this._onClick}>
+                <slot name="btn-text">Seleccionar opción</slot>
+            </button>
             <ul class="features">
-            ${featuresArr.length
+                ${featuresArr.length
                 ? featuresArr.map(f => html`<li>${f}</li>`)
                 : html`<slot name="features"></slot>`}
             </ul>

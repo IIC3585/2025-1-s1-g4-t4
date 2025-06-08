@@ -62,7 +62,7 @@ template.innerHTML = `
     <div class="plan-title"><slot name="title"></slot></div>
     <div class="plan-visits"><slot name="visits"></slot></div>
     <div class="plan-price">$<slot name="price"></slot></div>
-    <button>Seleccionar opción</button>
+    <button><slot name="btn-text">Seleccionar opción</slot></button>
     <ul class="features"></ul>
   </div>
 `;

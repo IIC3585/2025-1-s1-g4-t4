@@ -104,6 +104,33 @@
             overflow-x: auto;
         }
 
+        /* --- Estilos Personalizados para Suscripción --- */
+        .light-suscripcion {
+            --plan-bg: #fef6e4;
+            --suscripcion-color: #6a4c93;
+            --suscripcion-header-color: #6a4c93;
+            --suscripcion-visits-color: #6a4c93;
+            --suscripcion-price-color: #6a4c93;
+            --suscripcion-features-color: #6a4c93;
+            --suscripcion-btn-bg: #fff0da;
+            --suscripcion-btn-color: #6a4c93;
+            --suscripcion-btn-border-color: #d8c3f3;
+            --suscripcion-btn-hover-bg: #fdeacc;
+        }
+
+        .dark-suscripcion {
+            --plan-bg: #2c3e50;
+            --suscripcion-color: #ecf0f1;
+            --suscripcion-header-color: #ecf0f1;
+            --suscripcion-visits-color: #bdc3c7;
+            --suscripcion-price-color: #1abc9c;
+            --suscripcion-features-color: #ecf0f1;
+            --suscripcion-btn-bg: #34495e;
+            --suscripcion-btn-color: #ecf0f1;
+            --suscripcion-btn-border-color: #7f8c8d;
+            --suscripcion-btn-hover-bg: #3d566e;
+        }
+
         /* --- Estilos Personalizados para Acordeones --- */
         #vanilla-accordion-custom {
             --accordion-section-border-color: #8e44ad;
@@ -211,6 +238,14 @@
         <h1><span aria-hidden="true">🧩</span> Demo</h1>
         <h2><span aria-hidden="true">🤝</span> Demo componente suscripcion</h2>
         <h3>Web Component estándar</h3>
+        <h4>Estilo por Defecto y Funcionalidad Básica</h4>
+        <div class="explanation">
+            <p>Este es el componente de suscripción estándar WC con su apariencia y comportamiento
+                predeterminados. Al hacer clic en el botón, se dispara un evento personalizado
+                <code>suscripcion-click</code>
+                con el plan seleccionado.
+            </p>
+        </div>
         <div class="horizontal">
             <suscripcion-component title="Basic" visits="500" price="0" features="Feature básica">
             </suscripcion-component>
@@ -224,7 +259,37 @@
                 features="Feature básica, Features freelance, Features business, Features enterprice">
             </suscripcion-component>
         </div>
+        <h4>Variaciones y Personalización</h4>
+        <div class="explanation">
+            <p>Esta versiones de <code>&lt;suscripcion-component&gt;</code> demuestran:</p>
+            <ul>
+                <li><strong>Personalización mediante CSS variables</strong> (colores de fondo, texto, borde).</li>
+                <li><strong>Contenido enriquecido con <code>&lt;slot&gt;</code></strong> para títulos con íconos.</li>
+                <li><strong>Temas claros y oscuros</strong> para integrarlo en diferentes UIs.</li>
+            </ul>
+        </div>
+        <div class="horizontal">
+            <suscripcion-component class="light-suscripcion" visits="3 000" price="5"
+                features="Métricas limitadas, Soporte por email">
+                <span slot="title">🌟 Plan Estrella</span>
+                <span slot="btn-text">¡Suscríbete!</span>
+            </suscripcion-component>
+            <suscripcion-component class="dark-suscripcion" visits="∞" price="99"
+                features="Todas las funciones, Soporte dedicado, API privada">
+                <span slot="title">🚀 Plan Premium</span>
+                <span slot="btn-text">¡Únete ahora!</span>
+            </suscripcion-component>
+        </div>
+
         <h3>LitElement Component</h3>
+        <h4>Estilo por Defecto y Funcionalidad Básica</h4>
+        <div class="explanation">
+            <p>Este es el componente de suscripción Lit con su apariencia y comportamiento
+                predeterminados. Similar al estándar WC, al hacer clic en el botón se dispara el evento
+                <code>suscripcion-click</code>
+                con el plan seleccionado.
+            </p>
+        </div>
         <div class="horizontal">
             <suscripcion-lit title="Basic" visits="500" price="0" features="Feature básica"></suscripcion-lit>
             <suscripcion-lit title="Freelance" visits="10 000" price="16"
@@ -234,48 +299,27 @@
             <suscripcion-lit title="Enterprice" visits="1 000 000+" price="129"
                 features="Feature básica, Features freelance, Features business, Features enterprice"></suscripcion-lit>
         </div>
-        <h3>Variaciones y Personalización del componente suscripción</h3>
+        <h4>Variaciones y Personalización</h4>
 
         <div class="explanation">
-            <p>Estas versiones de <code>&lt;suscripcion-component&gt;</code> y <code>&lt;suscripcion-lit&gt;</code>
-                demuestran:</p>
+            <p>Esta versiones de <code>&lt;suscripcion-lit&gt;</code> demuestran:</p>
             <ul>
                 <li><strong>Personalización mediante CSS variables</strong> (colores de fondo, texto, borde).</li>
                 <li><strong>Contenido enriquecido con <code>&lt;slot&gt;</code></strong> para títulos con íconos.</li>
                 <li><strong>Temas claros y oscuros</strong> para integrarlo en diferentes UIs.</li>
-                <li><strong>Reacción al evento <code>suscripcion-click</code></strong>.</li>
             </ul>
         </div>
 
-        <div class="horizontal" style="--plan-bg: #fef6e4;
-            --suscripcion-color: #6a4c93;
-            --suscripcion-header-color: #6a4c93;
-            --suscripcion-visits-color: #6a4c93;
-            --suscripcion-price-color: #6a4c93;
-            --suscripcion-features-color: #6a4c93;
-            --suscripcion-btn-bg: #fff0da;
-            --suscripcion-btn-color: #6a4c93;
-            --suscripcion-btn-border-color: #d8c3f3;
-            --suscripcion-btn-hover-bg: #fdeacc;">
-            <suscripcion-component visits="3 000" price="5" features="Métricas limitadas, Soporte por email">
+        <div class="horizontal">
+            <suscripcion-lit class="light-suscripcion" visits="3 000" price="5"
+                features="Métricas limitadas, Soporte por email">
                 <span slot="title">🌟 Plan Estrella</span>
                 <span slot="btn-text">¡Suscríbete!</span>
-            </suscripcion-component>
-        </div>
-
-        <div class="horizontal" style="--suscripcion-bg: #2c3e50;
-            --plan-bg: #34495e;
-            --suscripcion-color: #ecf0f1;
-            --suscripcion-header-color: #ecf0f1;
-            --suscripcion-visits-color: #bdc3c7;
-            --suscripcion-price-color: #1abc9c;
-            --suscripcion-features-color: #ecf0f1;
-            --suscripcion-btn-bg: #34495e;
-            --suscripcion-btn-color: #ecf0f1;
-            --suscripcion-btn-border-color: #7f8c8d;
-            --suscripcion-btn-hover-bg: #3d566e;">
-            <suscripcion-lit visits="∞" price="499" features="Todas las funciones, Soporte dedicado, API privada">
-                <span slot="title">🧠 Ultra Premium</span>
+            </suscripcion-lit>
+            <suscripcion-lit class="dark-suscripcion" visits="∞" price="99"
+                features="Todas las funciones, Soporte dedicado, API privada">
+                <span slot="title">🚀 Plan Premium</span>
+                <span slot="btn-text">¡Únete ahora!</span>
             </suscripcion-lit>
         </div>
 
